@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Base ---- */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg text-text-primary font-sans;
+  }
+
+  ::selection {
+    @apply bg-accent-dim text-accent;
+  }
+}
+
+/* ---- Glass card utility ---- */
+@layer components {
+  .glass-card {
+    @apply bg-surface border border-border rounded-card shadow-sm;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-colors duration-300;
+  }
+
+  .glass-card-hover:hover {
+    border-color: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.015);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* ---- Glow orbs ---- */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow-orb--top {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(79, 110, 247, 0.12) 0%, transparent 70%);
+  top: -200px;
+  right: -100px;
+}
+
+.glow-orb--mid {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.07) 0%, transparent 70%);
+  left: -150px;
+  top: 50%;
+}
+
+.glow-orb--bottom {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(79, 110, 247, 0.06) 0%, transparent 70%);
+  bottom: -100px;
+  right: 10%;
+}
+
+/* ---- Section container ---- */
+.section-container {
+  @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-12;
+}
+
+/* ---- Hero title ---- */
+.hero-title {
+  @apply text-hero;
+}
+
+.hero-title .accent {
+  @apply text-accent;
+}
+
+/* ---- Label pill ---- */
+.label-pill {
+  @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full
+         bg-accent-dim border border-[rgba(79,110,247,0.18)]
+         text-accent text-sm font-medium tracking-wide;
+}
+
+/* ---- Buttons ---- */
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-6 py-3 rounded-btn
+         bg-accent text-white font-medium text-sm
+         transition-all duration-200;
+  box-shadow: 0 4px 14px rgba(79, 110, 247, 0.25);
+}
+
+.btn-primary:hover {
+  background: #3d5ce5;
+  box-shadow: 0 6px 20px rgba(79, 110, 247, 0.35);
+}
+
+.btn-secondary {
+  @apply inline-flex items-center gap-2 px-6 py-3 rounded-btn
+         bg-surface border border-border text-text-primary font-medium text-sm
+         transition-all duration-200;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* ---- Bento grid ---- */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+/* ---- Video wrapper ---- */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---- Bento card inner ---- */
+.bento-card {
+  @apply glass-card p-6 flex flex-col gap-4 relative overflow-hidden;
+  min-height: 180px;
+}
+
+.bento-card__icon {
+  @apply w-10 h-10 rounded-lg flex items-center justify-center
+         bg-accent-dim text-accent;
+}
+
+.bento-card__title {
+  @apply text-base font-semibold text-text-primary;
+}
+
+.bento-card__desc {
+  @apply text-sm text-text-secondary leading-relaxed;
+}
+
+.bento-card__tag {
+  @apply text-xs text-text-tertiary font-mono;
+}
